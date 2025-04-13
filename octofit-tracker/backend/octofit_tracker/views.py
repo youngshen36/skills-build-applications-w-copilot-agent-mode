@@ -9,7 +9,10 @@ def api_root(request, format=None):
     if request.method == 'POST':
         return Response({"message": "POST request received"}, status=status.HTTP_201_CREATED)
 
-    base_url = 'http://localhost:8000/'
+    # Dynamically determine the base URL
+    host = request.get_host()
+    base_url = f"http://{host}/" if host.startswith("localhost") else f"https://{host}/"
+
     return Response({
         'users': base_url + 'api/users/?format=api',
         'teams': base_url + 'api/teams/?format=api',
