@@ -11,7 +11,7 @@ def api_root(request, format=None):
 
     # Dynamically determine the base URL
     host = request.get_host()
-    base_url = f"http://{host}/" if host.startswith("localhost") else f"https://{host}/"
+    base_url = f"http://{host}/codespace/" if host.startswith("localhost") else f"https://{host}/codespace/"
 
     return Response({
         'users': base_url + 'api/users/?format=api',
