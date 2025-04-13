@@ -11,7 +11,7 @@ def api_root(request, format=None):
 
     # Dynamically determine the base URL with port 8000
     host = request.get_host()
-    base_url = f"http://{host}:8000/" if host.startswith("localhost") else f"https://{host}:8000/"
+    base_url = f"http://{host}/" if host.startswith("localhost") else f"https://{host}/"
 
     return Response({
         'users': base_url + 'api/users/?format=api',
