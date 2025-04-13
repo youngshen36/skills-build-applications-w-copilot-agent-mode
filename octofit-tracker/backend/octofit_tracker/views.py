@@ -9,9 +9,9 @@ def api_root(request, format=None):
     if request.method == 'POST':
         return Response({"message": "POST request received"}, status=status.HTTP_201_CREATED)
 
-    # Dynamically determine the base URL
+    # Dynamically determine the base URL with port 8000
     host = request.get_host()
-    base_url = f"http://{host}/codespace/" if host.startswith("localhost") else f"https://{host}/codespace/"
+    base_url = f"http://{host}:8000/" if host.startswith("localhost") else f"https://{host}:8000/"
 
     return Response({
         'users': base_url + 'api/users/?format=api',
