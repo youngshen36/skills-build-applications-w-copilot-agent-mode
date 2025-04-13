@@ -9,10 +9,7 @@ def api_root(request, format=None):
     if request.method == 'POST':
         return Response({"message": "POST request received"}, status=status.HTTP_201_CREATED)
 
-    # Dynamically determine the base URL with port 8000
-    host = request.get_host()
-    base_url = f"http://{host}/" if host.startswith("localhost") else f"https://{host}/"
-
+    base_url = 'https://fictional-chainsaw-wrxx69r95gqvfg7xg-8000.app.github.dev/'
     return Response({
         'users': base_url + 'api/users/?format=api',
         'teams': base_url + 'api/teams/?format=api',
